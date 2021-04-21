@@ -113,15 +113,6 @@ def Process_data(df,CEGH_Filter,Variant_ID,gene):
 
     return data
 
-def Variant_ID_biovar(dataframe):
-    list1= []
-    for i in range(0,len(dataframe)):
-      if len(dataframe['Alternative'][i])==1: 
-        variant_ID_biovar = dataframe['Chromosome'][i]+'-'+dataframe['Position'][i]+'-'+dataframe['Reference'][i]+'-'+dataframe['Alternative'][i]
-        frequency = dataframe['Allele Frequency'][i]
-        list1.append([variant_ID_biovar,frequency])
-    return list1
-
 
 def Dataframe_adjust(dataframe):
     pd.set_option('display.max_column',None)
