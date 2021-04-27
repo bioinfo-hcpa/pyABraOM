@@ -20,7 +20,7 @@ def Request(version:str,query:str,GATK_PASS=False):
 
         url = "http://abraom.ib.usp.br/script.php"
  
-        version = genome_version(version)
+        version = Genome_version(version)
         if GATK_PASS==False:
            response= requests.post(url, data={"table":version,"str":query},timeout =None) 
 
