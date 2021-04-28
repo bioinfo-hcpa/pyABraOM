@@ -93,7 +93,7 @@ def Process_data(df,CEGH_Filter,Variant_ID,gene):
     data["Gene"]=gene_list
 
     if Variant_ID==True:
-       data['ID'] =  [i if i != 'NA' else '-' for i in Variant_ID_list]
+       data['rsID'] =  [i if i != 'NA' else '-' for i in Variant_ID_list]
 
     data["GATK Filter"]=Filter
 
@@ -135,7 +135,7 @@ def Searches(lista:list):
 
      final_data['Hemizygous'] = final_data['Hemizygous'].fillna(0)
 
-     final_data['ID'] = final_data['ID'].fillna('-')
+     final_data['rsID'] = final_data['rsID'].fillna('-')
 
      return final_data
 
