@@ -40,7 +40,7 @@ df = Variant_ID('hg38','rs115134980')
 
 ### Batch Search 
 
-Variant_ID(version:str,variant:str,CEGH_Filter= False,Process= True):
+Searches(searches_list:list)
 
 ```python
 import pyabraom
