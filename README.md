@@ -9,7 +9,7 @@
 
    There are 3 kinds of search by using pyABraOM and all returned in the same format: Gene, Genomic Region and Variant search.
    
-   Since the ABraOM database has the two latest human genome versions, the user must specify the version in GRCh37/hg19 or GRCh38/hg38 to retrieve data from the database for the specific genome version. Besides, when searching by  genes, genomic regions or variant for chromosomes X or Y, a new column "Number of Hemizygous" will be added to the outputted dataframe, so the user should have caution when performing pandas concatenation operations or batch searchings that could potentially mix both kinds of dataframe, resulting in table cells with -, that is equal to NaN values. Futhermore, the GATK and CEGH filter provided from ABraOM are available, but latter is not in the dafault output dataframe.
+   Since the ABraOM database has the two latest human genome versions, the user must specify the version in GRCh37/hg19 or GRCh38/hg38 to retrieve data from the database for the specific genome version. Besides, when searching by  genes, genomic regions or variant for chromosomes X or Y, a new column "Number of Hemizygous" will be added to the output dataframe, so the user should have caution when performing pandas concatenation operations or batch searchings that could potentially mix both kinds of dataframe, resulting in table cells with -, that is equal to NaN values. Futhermore, the GATK and CEGH filter provided from ABraOM are available, but latter is not in the dafault output dataframe.
    
    
 ### Search by gene
@@ -44,7 +44,7 @@ Variant_ID(version:str,variant:str,CEGH_Filter= False,Process= True):
 
 ```python
 import pyabraom
-df = Searches([Search_gene('hg19','ACE2'),Search_gene('hg19','TMPRSS2')])
+df = Searches([Search_gene('hg38','ACE2'),Search_gene('hg38','TMPRSS2')])
 ```
 ## Features
 
