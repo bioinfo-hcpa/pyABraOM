@@ -350,7 +350,7 @@ def Variant_ID_biovar(dataframe,version):
     for i in range(0,len(dataframe)):
       if dataframe['Alternative'][i]=='-': 
         next_nt=genome_ref_info(int(dataframe['Chromosome'][i]),version, int(dataframe['Position'][i])+1)
-        variant_ID_biovar = dataframe['Chromosome'][i]+'-'+dataframe['Position'][i]+'-'+dataframe['Reference'][i]+'-'+dataframe['Reference'][i]+next_nt
+        variant_ID_biovar = dataframe['Chromosome'][i]+'-'+dataframe['Position'][i]+'-'+dataframe['Reference'][i]+'-'+next_nt
         frequency = dataframe['Allele Frequency'][i]
         list1.append([variant_ID_biovar,frequency])
 
