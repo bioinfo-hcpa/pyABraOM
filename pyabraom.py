@@ -349,13 +349,13 @@ def Variant_ID_biovar(dataframe,version):
     list1= []
     for i in range(0,len(dataframe)):
       if dataframe['Alternative'][i]=='-': 
-        next_nt=indel_info_genome(int(dataframe['Chromosome'][i]),version, int(dataframe['Position'][i])+1)
+        next_nt=genome_ref_info(int(dataframe['Chromosome'][i]),version, int(dataframe['Position'][i])+1)
         variant_ID_biovar = dataframe['Chromosome'][i]+'-'+dataframe['Position'][i]+'-'+dataframe['Reference'][i]+'-'+dataframe['Reference'][i]+next_nt
         frequency = dataframe['Allele Frequency'][i]
         list1.append([variant_ID_biovar,frequency])
 
       elif dataframe['Reference'][i]=='-': 
-        prev_nt=indel_info_genome(int(dataframe['Chromosome'][i]),version, int(dataframe['Position'][i]))
+        prev_nt=genome_ref_info(int(dataframe['Chromosome'][i]),version, int(dataframe['Position'][i]))
         variant_ID_biovar = dataframe['Chromosome'][i]+'-'+dataframe['Position'][i]+'-'+prev_nt+'-'+prev_nt+dataframe['Alternative'][i]
         frequency = dataframe['Allele Frequency'][i]
         list1.append([variant_ID_biovar,frequency])
