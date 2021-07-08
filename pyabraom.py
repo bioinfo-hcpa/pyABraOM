@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import time
+import pkg_resources
 from Bio import Entrez, SeqIO
 
 
@@ -20,13 +21,17 @@ def Genome_version(version:str):
 def Request(version:str,query:str,GATK_PASS=False):
 
         url = "http://abraom.ib.usp.br/script.php"
- 
+        certificate_path = pkg_resources.resource_filename('pyabraom', 'CertBundle.pem')
+        print("O CAMINHO DO ARQUIVO .PEM É\n", certificate_path, "\n")
+        print("A VERSION É:\n", version, "\nA QUERY É:\n", query, "\n\n")
+
         version = Genome_version(version)
+        print("A VERSION SEGUNDO A FUNÇÃO Genome_version():\n", version, "\n")
         if GATK_PASS==False:
-           response= requests.post(url, data={"table":version,"str":query},verify='CertBundle.pem',timeout =None) 
+           response= requests.post(url, data={"table":version,"str":query},verify=certificate_path,timeout =None) 
 
         else:
-           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},verify='CertBundle.pem',timeout =None) 
+           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},verify=certificate_path,timeout =None) 
 
         return response.json()
         
@@ -250,13 +255,13 @@ def Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID
             response = Request(version,region)
 
             if Process==True:
-              result = Process_data(response,CEGH_Filter,Variant_ID)
-              dataframe= Dataframe_adjust(result)
+              result = Process_data(response,CEGH_Filter,Variant_ID) # Paola, está faltando o argumento 'gene' pra essa função
+              data= Dataframe_adjust(result)
 
             else:
               data= response
 
-        return dataframe
+        return data
 
 
 def Variant_ID(version:str,variant:str,CEGH_Filter= False,GATK_PASS= False,Process= True):
