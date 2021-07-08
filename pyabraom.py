@@ -23,10 +23,10 @@ def Request(version:str,query:str,GATK_PASS=False):
  
         version = Genome_version(version)
         if GATK_PASS==False:
-           response= requests.post(url, data={"table":version,"str":query},timeout =None) 
+           response= requests.post(url, data={"table":version,"str":query},verify='CertBundle.pem',timeout =None) 
 
         else:
-           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},timeout =None) 
+           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},verify='CertBundle.pem',timeout =None) 
 
         return response.json()
         
