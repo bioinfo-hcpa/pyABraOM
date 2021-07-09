@@ -18,6 +18,7 @@ Search_gene(version:str,gene:str,CEGH_Filter= False,Variant_ID= False, Process= 
 
 ```python
 import pyabraom
+from pyabraom import Seach_gene
 df = Search_gene('hg38', 'ACE2')
 ```
 ### Search by  genomic region
@@ -26,6 +27,7 @@ Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID= Fa
 
 ```python
 import pyabraom
+from pyabraom import Search_region
 df = Search_region('hg38',4,980883,984868)
 ```
 
@@ -35,6 +37,7 @@ Variant_ID(version:str,variant:str,CEGH_Filter= False,Process= True):
 
 ```python
 import pyabraom
+from pyabraom import Variant_ID
 df = Variant_ID('hg38','rs115134980')
 ```
 
