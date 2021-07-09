@@ -22,11 +22,13 @@ def Request(version:str,query:str,GATK_PASS=False):
         url ="https://abraom.ib.usp.br/script.php" 
  
         version = genome_version(version)
+        certificate_path = pkg_resources.resource_filename('pyabraom', 'CertBundle.pem')
+
         if GATK_PASS==False:
-           response= requests.post(url, data={"table":version,"str":query},verify='CertBundle.pem',timeout =None) 
+           response= requests.post(url, data={"table":version,"str":query},verify=certificate_path,timeout =None) 
  
         else:
-           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},verify='CertBundle.pem',timeout =None) 
+           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},verify=certificate_path,timeout =None) 
  
         return response.json()
  
