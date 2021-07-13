@@ -149,11 +149,11 @@ def Search_region(version:str,chromosome,start,end,CEGH_Filter=False,Process_dat
         response = Request(version,region)
         if Process_data==True:
            result = process_data(response,CEGH_Filter)
-           dataframe= dataframe_adjust(result)
+           data= dataframe_adjust(result)
         else:
            data= response
  
-        return dataframe
+        return data
  
  
  
