@@ -1,6 +1,6 @@
 # pyABraOM
 
-![](https://img.shields.io/badge/python-v1.x-purple)
+![](https://img.shields.io/badge/python-3.x-purple)
 
 ## Introduction
 
