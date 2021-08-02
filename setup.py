@@ -12,8 +12,8 @@ setup(
   install_requires=["requests>=2.23.0",
                     "pandas>=1.1.5",
                     "times",
-                    "pkg_resources",
-                    "biopython"],
+                    "pkg_resources"
+                    ],
   py_modules=["Search_gene",
               "Search_Region",
               "Variant_ID", 
