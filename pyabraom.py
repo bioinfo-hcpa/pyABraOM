@@ -205,29 +205,20 @@ def genome_ref_info(chromosome,version,position):
     return(request.text)
 
 
+
+
 def Variant_ID_biovars(df,version):
-
-    df['Alternative']=df['Alternative'].str.extract('([a-zA-Z ][a-zA-Z ]+)', expand=False)
-    df1=df.copy(deep=True)
-    df1.dropna(subset = ["Alternative"], inplace=True)
-    df1.reset_index(inplace=True)
-    df['Alternative']=df['Alternative'].str.extract('([a-zA-Z ])', expand=False)
-    df2=df.copy(deep=True)
-    df2.dropna(subset = ["Alternative"], inplace=True)
-    df2.reset_index(inplace=True)
-
     list1= []
 
-    for i in range(0,len(df1)): 
-       prev_nt=genome_ref_info(df1['Chromosome'][i], version, int(df1['Position'][i]))
-       variant_ID_biovar = df1['Chromosome'][i]+'-'+str(df1['Position'][i])+'-'+prev_nt+'-'+prev_nt+df1['Alternative'][i]
-       list1.append([variant_ID_biovar, df1['Allele Frequency'][i]])
+    for i in range(0,len(df)): 
+       if df['Reference'][i] != '-' :
+          variant_ID_biovar= df['Chromosome'][i]+'-'+str(df['Position'][i])+'-'+df['Reference'][i]+'-'+df['Alternative'][i]
+          list1.append([variant_ID_biovar,df['Allele Frequency'][i]])
+          
+       elif df['Reference'][i] == '-':
+          prev_nt=genome_ref_info(df['Chromosome'][i], version, int(df['Position'][i]))
+          variant_ID_biovar = df['Chromosome'][i]+'-'+str(df['Position'][i])+'-'+prev_nt+'-'+prev_nt+df['Alternative'][i]
+          list1.append([variant_ID_biovar,df['Allele Frequency'][i]])
 
-    list2=list(df2.agg(lambda x: [f"{x['Chromosome']}-{x['Position']}-{x['Reference']}-{x['Alternative']}", float(f"{x['Allele Frequency']}")], axis=1))
 
-    flist=list1+list2
-
-    flist.sort(key=lambda x:x[0])
-
-
-    return flist
+    return list1
