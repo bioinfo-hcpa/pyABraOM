@@ -221,9 +221,9 @@ def Variant_ID_biovars(df,version):
     for i in range(0,len(df1)): 
        prev_nt=genome_ref_info(df1['Chromosome'][i], version, int(df1['Position'][i]))
        variant_ID_biovar = df1['Chromosome'][i]+'-'+str(df1['Position'][i])+'-'+prev_nt+'-'+prev_nt+df1['Alternative'][i]
-       list1.append((variant_ID_biovar,df1['Allele Frequency'][i]))
+       list1.append([variant_ID_biovar, df1['Allele Frequency'][i]])
 
-    list2=list(df2.agg(lambda x: f"({x['Chromosome']}-{x['Position']}-{x['Reference']}-{x['Alternative']}, {x['Allele Frequency']})", axis=1))
+    list2=list(df2.agg(lambda x: [f"{x['Chromosome']}-{x['Position']}-{x['Reference']}-{x['Alternative']}", float(f"{x['Allele Frequency']}")], axis=1))
 
     flist=list1+list2
 

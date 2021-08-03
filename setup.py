@@ -11,8 +11,7 @@ setup(
   license= "MIT License",
   install_requires=["requests>=2.23.0",
                     "pandas>=1.1.5",
-                    "times",
-                    "pkg_resources"
+                    "times"
                     ],
   py_modules=["Search_gene",
               "Search_Region",
