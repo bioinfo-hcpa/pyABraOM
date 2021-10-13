@@ -164,7 +164,12 @@ def Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID
             raise Exception('End needs to be greater than start position.')
 
         else:
-            region = "%d"":""%d""-""%d" %(chromosome,start,end)
+            if chromosome in ['X','Y']:
+
+              region = "%s"":""%d""-""%d" %(chromosome,start,end)
+            else:
+
+              region = "%d"":""%d""-""%d" %(chromosome,start,end)
             response = Request(version,region)
 
             if Process==True:
@@ -175,6 +180,7 @@ def Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID
               data= response
 
         return data
+
 
 
 def Variant_ID(version:str,variant:str,CEGH_Filter= False,GATK_PASS= False,Process= True):
