@@ -128,12 +128,16 @@ def Dataframe_adjust(dataframe):
 
     return dataframe
 
-def Searches(lista:list):
+def Searches(lista:list,verbose=True):
      appended_data = []
-
+     searches=len(lista)
+     count=1
      for i in lista:
          data = i
          appended_data.append(data)
+         if verbose:
+            print("Batch searching... ",count, "/", searches)
+            count=count+1
 
      final_data = pd.concat(appended_data, ignore_index=True)
      if 'Number of Hemizygotes' in final_data.columns:
@@ -164,12 +168,14 @@ def Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID
             raise Exception('End needs to be greater than start position.')
 
         else:
-            if chromosome in ['X','Y']:
+            if isinstance(chromosome,int):
+            
+              region = "%d"":""%d""-""%d" %(chromosome,start,end)
 
-              region = "%s"":""%d""-""%d" %(chromosome,start,end)
             else:
 
-              region = "%d"":""%d""-""%d" %(chromosome,start,end)
+              region = "%s"":""%d""-""%d" %(chromosome,start,end)
+
             response = Request(version,region)
 
             if Process==True:
