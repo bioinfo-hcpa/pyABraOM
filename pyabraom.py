@@ -168,12 +168,9 @@ def Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID
             raise Exception('End needs to be greater than start position.')
 
         else:
-            if isinstance(chromosome,int):
-            
+            try:
               region = "%d"":""%d""-""%d" %(chromosome,start,end)
-
-            else:
-
+            except:
               region = "%s"":""%d""-""%d" %(chromosome,start,end)
 
             response = Request(version,region)
