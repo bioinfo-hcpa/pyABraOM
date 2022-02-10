@@ -156,7 +156,7 @@ def Search_gene(version:str,gene:str,CEGH_Filter= False,GATK_PASS= False,Variant
             result = Process_data(response,CEGH_Filter,Variant_ID)
             data= Dataframe_adjust(result)
             data= data.loc[data['Gene'] == gene]
-
+            data.reset_index(inplace=True,drop=True)
         else:
            data= response
 
