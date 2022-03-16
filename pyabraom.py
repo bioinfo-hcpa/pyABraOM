@@ -64,7 +64,7 @@ def Process_data(df,CEGH_Filter,Variant_ID):
 
         Filter.append(df["data"][i]["FILTER"])
 
-        predfunc.append(df["data"][i]["PredictedFunc_refGene"])
+        predfunc.append(df["data"][i]["PredictedFunc_refGene"].replace(';','_'))
         
         allele_number.append(df["data"][i]["Allele_number"])
 
