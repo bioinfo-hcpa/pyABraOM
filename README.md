@@ -16,11 +16,11 @@
 
 The search method expects the gene name to be considered in the function Search_gene(version:str,gene:str,CEGH_Filter= False,Variant_ID= False, Process= True).
 
-*version (str):the reference genome version (either "GRCh37/hg19" or "GRCh38/hg38")
-*gene (str): the gene name to search in database
-*CEGH_Filter (bool): whether to provide in-house quality control filter CEGH-USP
-*Variant_ID (bool): whether to provide variant identifier
-*Process (bool): whether to provide data in JSON format or pandas dataframe
+* version (str):the reference genome version (either "GRCh37/hg19" or "GRCh38/hg38")
+* gene (str): the gene name to search in database
+* CEGH_Filter (bool): whether to provide in-house quality control filter CEGH-USP
+* Variant_ID (bool): whether to provide variant identifier
+* Process (bool): whether to provide data in JSON format or pandas dataframe
 
 ```python
 import pyabraom
@@ -31,13 +31,13 @@ df = Search_gene('hg38', 'ACE2')
 
 The genomic region method expects the genome region to be considered in the function Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID= False, Process= True). The X and Y chromosome must be provided as character in the chromosome parameter.
 
-*version (str):the reference genome version (either "GRCh37/hg19" or "GRCh38/hg38")
-*chromosome(obj): chromosome 
-*start (int): where the region of interest starts 
-*end (int):where the region of interest ends
-*CEGH_Filter (bool): whether to provide in-house quality control filter CEGH-USP
-*Variant_ID (bool): whether to provide variant identifier
-*Process (bool): whether to provide data in JSON format or pandas dataframe
+* version (str):the reference genome version (either "GRCh37/hg19" or "GRCh38/hg38")
+* chromosome(obj): chromosome 
+* start (int): where the region of interest starts 
+* end (int):where the region of interest ends
+* CEGH_Filter (bool): whether to provide in-house quality control filter CEGH-USP
+* Variant_ID (bool): whether to provide variant identifier
+* Process (bool): whether to provide data in JSON format or pandas dataframe
 
 ```python
 import pyabraom
@@ -49,11 +49,11 @@ df = Search_region('hg38',4,980883,984868)
 
 The variant search method expects the variant identifier rsID i the function Variant_ID(version:str,variant:str,CEGH_Filter= False,Process= True):
 
-*version (str):the reference genome version (either "GRCh37/hg19" or "GRCh38/hg38")
-*variant (str): the variant identifier rsID to search in database
-*CEGH_Filter (bool): whether to provide in-house quality control filter CEGH-USP
-*Variant_ID (bool): whether to provide variant identifier
-*Process (bool): whether to provide data in JSON format or pandas dataframe
+* version (str):the reference genome version (either "GRCh37/hg19" or "GRCh38/hg38")
+* variant (str): the variant identifier rsID to search in database
+* CEGH_Filter (bool): whether to provide in-house quality control filter CEGH-USP
+* Variant_ID (bool): whether to provide variant identifier
+* Process (bool): whether to provide data in JSON format or pandas dataframe
 
 ```python
 import pyabraom
