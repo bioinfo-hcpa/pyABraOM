@@ -149,9 +149,10 @@ def Searches(lista:list,verbose=True):
 
 
 def Search_gene(version:str,gene:str,CEGH_Filter= False,GATK_PASS= False,Variant_ID=False, Process= True):
-         
+        
+        gene= gene.upper()
         response = Request(version,gene,GATK_PASS)
-
+        
         if Process==True:
             result = Process_data(response,CEGH_Filter,Variant_ID)
             data= Dataframe_adjust(result)
