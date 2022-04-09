@@ -19,8 +19,8 @@
 
    Currently there is not a PyPI version for the PyABraOM API, so the installation needs that you clone this repository and install it as local package.
 ```
-$ git clone https://github.com/bioinfo-hcpa/pynoma.git
-$ pip install -e pynoma #outside the directory
+$ git clone https://github.com/bioinfo-hcpa/pyABraOM.git
+$ pip install -e pyABraOM #outside the directory
 ```
 
 ## Search Types
