@@ -2,9 +2,25 @@
 
 ![](https://img.shields.io/badge/python-3.x-purple)
 
+## Summary
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Search Types](#search-types)
+    - [Search by gene](#search-by-gene)
+    - [Search by region](#search-by-genomic-region)
+    - [Search by variant](#search-by-variant)
+- [Batch search](#batch-search)
+
 ## Introduction
+   PyABraOM is an API developed to facilitate the access to human variant data from ABraOM database to access data from GRCh37/hg19 and GRCh38/hg38 genome version. The package offers support to three kinds of different searches and the possibility to search in batches.For plotting the data, please take a look at the [BIOVARS package](https://github.com/bioinfo-hcpa/biovars).
+   
+## Installation
 
-
+   Currently there is not a PyPI version for the PyABraOM API, so the installation needs that you clone this repository and install it as local package.
+   $ git clone https://github.com/bioinfo-hcpa/pynoma.git
+   $ pip install -e pynoma #outside the directory
+   
 ## Search Types
 
    There are 3 kinds of search by using pyABraOM and all returned in the same format: Gene, Genomic Region and Variant search.
@@ -27,7 +43,7 @@ import pyabraom
 from pyabraom import Seach_gene
 df = Search_gene('hg38', 'ACE2')
 ```
-### Search by  genomic region
+### Search by genomic region
 
 The genomic region method expects the genome region to be considered in the function Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID= False, Process= True). The X and Y chromosome must be provided as character in the chromosome parameter.
 
@@ -45,7 +61,7 @@ from pyabraom import Search_region
 df = Search_region('hg38',4,980883,984868)
 ```
 
-### Search by  variant
+### Search by variant
 
 The variant search method expects the variant identifier rsID i the function Variant_ID(version:str,variant:str,CEGH_Filter= False,Process= True):
 
@@ -77,5 +93,5 @@ Not available yet.
 ## Additional Information
 
 ## References
-
+Naslavsky, Scliar, Yamamoto, et al., 2022. Whole-genome sequencing of 1,171 elderly admixed individuals from São Paulo, Brazil.
 ```
