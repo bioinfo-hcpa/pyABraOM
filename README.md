@@ -18,9 +18,11 @@
 ## Installation
 
    Currently there is not a PyPI version for the PyABraOM API, so the installation needs that you clone this repository and install it as local package.
-   $ git clone https://github.com/bioinfo-hcpa/pynoma.git
-   $ pip install -e pynoma #outside the directory
-   
+```
+$ git clone https://github.com/bioinfo-hcpa/pynoma.git
+$ pip install -e pynoma #outside the directory
+```
+
 ## Search Types
 
    There are 3 kinds of search by using pyABraOM and all returned in the same format: Gene, Genomic Region and Variant search.
@@ -93,5 +95,5 @@ Not available yet.
 ## Additional Information
 
 ## References
+
 Naslavsky, Scliar, Yamamoto, et al., 2022. Whole-genome sequencing of 1,171 elderly admixed individuals from São Paulo, Brazil.
-```
