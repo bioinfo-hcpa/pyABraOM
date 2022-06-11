@@ -11,9 +11,11 @@
     - [Search by region](#search-by-genomic-region)
     - [Search by variant](#search-by-variant)
 - [Batch search](#batch-search)
+- [BibTeX entry](#bibtex-entry) 
+- [Acknowledgement](#acknowledgement)
 
 ## Introduction
-   PyABraOM is an API developed to facilitate the access to human variant data from ABraOM database to access data from GRCh37/hg19 and GRCh38/hg38 genome version. The package offers support to three kinds of different searches and the possibility to search in batches.For plotting the data, please take a look at the [BIOVARS package](https://github.com/bioinfo-hcpa/biovars).
+   PyABraOM is an API developed to facilitate the access to human variant data from ABraOM database to access data from GRCh37/hg19 and GRCh38/hg38 genome version. The package offers support to three kinds of different searches and the possibility to search in batches.For plotting the data, please take a look at the [BIOVARS package](https://github.com/bioinfo-hcpa/biovars). If you have scientific interests or want to use our package in formal reports, we kindly ask you to cite us in your publication: [Carneiro, P., Colombelli, F., Recamonde-Mendoza, M., and Matte, U. (2022). Pynoma, PyABraOM and BIOVARS: Towards genetic variant data acquisition and integration. bioRxiv.](#bibtex-entry)
    
 ## Installation
 
@@ -92,7 +94,27 @@ df = Searches([Search_gene('hg38','ACE2'),Search_gene('hg38','TMPRSS2')])
 Not available yet.
 * Variant Filter
 
-## Additional Information
+
+## BibTeX entry
+
+```
+@article {Carneiro2022.06.07.495190,
+	author = {Carneiro, Paola and Colombelli, Felipe and Recamonde-Mendoza, Mariana and Matte, Ursula},
+	title = {Pynoma, PyABraOM and BIOVARS: Towards genetic variant data acquisition and integration},
+	elocation-id = {2022.06.07.495190},
+	year = {2022},
+	doi = {10.1101/2022.06.07.495190},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2022/06/09/2022.06.07.495190},
+	eprint = {https://www.biorxiv.org/content/early/2022/06/09/2022.06.07.495190.full.pdf},
+	journal = {bioRxiv}
+}
+```
+
+## Acknowledgement
+
+This research was supported by the National Council for Scientific and Technological Development (CNPq) and the Research Incentive Fund (FIPE) from Hospital de Clínicas de Porto Alegre.
+
 
 ## References
 
