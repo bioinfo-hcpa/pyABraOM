@@ -7,7 +7,7 @@ setup(
   description= "'A Python API to communicate with ABraOM database",
   author ="Paola Carneiro and Felipe Colombeli",
   author_email= "bioinfo@hcpa.edu.br",
-  url="abraompackage.com",
+  url="https://github.com/bioinfo-hcpa/pyABraOM",
   license= "MIT License",
   install_requires=["requests>=2.23.0",
                     "pandas>=1.1.5",
