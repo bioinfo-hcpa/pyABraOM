@@ -6,7 +6,7 @@ setup(
   version = '0.0.1',
   description= "'A Python API to communicate with ABraOM database",
   author ="Paola Carneiro and Felipe Colombeli",
-  author_email= "pa0la_barcellosca@gmail.com and fcolombelli@inf.ufrgs.br ",
+  author_email= "bioinfo@hcpa.edu.br",
   url="abraompackage.com",
   license= "MIT License",
   install_requires=["requests>=2.23.0",
