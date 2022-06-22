@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 setup(
   name= "PyABraOM",
   packages = ['pyabraom'],
-  version = '0.1.0',
+  version = '0.1.1',
   description= "A Python API to communicate with ABraOM database",
   author ="Paola Carneiro and Felipe Colombeli",
   author_email= "bioinfo@hcpa.edu.br",
