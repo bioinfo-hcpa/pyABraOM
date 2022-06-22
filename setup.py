@@ -1,13 +1,14 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 setup(
   name= "PyABraOM",
   packages = ['pyabraom'],
-  version = '0.1.2',
+  version = '0.1.6',
   description= "A Python API to communicate with ABraOM database",
-  author ="Paola Carneiro and Felipe Colombeli",
+  author ="Paola Carneiro and Felipe Colombelli",
   author_email= "bioinfo@hcpa.edu.br",
   url="https://github.com/bioinfo-hcpa/pyABraOM",
   license='GNU General Public License v3.0',
+  include_package_data=True,
   install_requires=["requests>=2.23.0",
                     "pandas>=1.1.5",
                     "times"

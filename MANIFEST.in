@@ -1,0 +1,3 @@
+include CertBundle.pem
+include pyabraom/CertBundle.pem
+recursive-include data *

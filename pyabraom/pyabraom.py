@@ -1,7 +1,5 @@
 import requests
 import pandas as pd
-from pandas import json_normalize
-import time
 import sys
 import pkg_resources
 
@@ -20,19 +18,25 @@ def Genome_version(version:str):
  
 def Request(version:str,query:str,GATK_PASS=False):
  
-        url ="https://abraom.ib.usp.br/script.php" 
- 
-        version = Genome_version(version)
-        certificate_path = pkg_resources.resource_filename('pyabraom', 'CertBundle.pem')
+   url ="https://abraom.ib.usp.br/script.php" 
 
-        if GATK_PASS==False:
-           response= requests.post(url, data={"table":version,"str":query},verify=certificate_path,timeout =None) 
+   version = Genome_version(version)
+   certificate_path = pkg_resources.resource_filename('pyabraom', 
+                                                      'CertBundle.pem')
+
+   if GATK_PASS==False:
+      response= requests.post(url, data={"table": version, "str": query},
+                              verify=certificate_path, 
+                              timeout=None) 
+
+   else:
+      response= requests.post(url, data={"table": version, 
+                                         "str": query,
+                                         "gatk":'PASS'},
+                              verify=certificate_path, timeout=None) 
+   return response.json()
  
-        else:
-           response= requests.post(url, data={"table":version,"str":query,"gatk":'PASS'},verify=certificate_path,timeout =None) 
- 
-        return response.json()
- 
+
 def Process_data(df,CEGH_Filter,Variant_ID):
 
     Chr = []
