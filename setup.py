@@ -1,14 +1,13 @@
 from setuptools import setup, find_packages
-
-
 setup(
-  name= "pyABraOM",
-  version = '0.0.1',
-  description= "'A Python API to communicate with ABraOM database",
+  name= "PyABraOM",
+  packages = ['pyabraom'],
+  version = '0.1.0',
+  description= "A Python API to communicate with ABraOM database",
   author ="Paola Carneiro and Felipe Colombeli",
   author_email= "bioinfo@hcpa.edu.br",
   url="https://github.com/bioinfo-hcpa/pyABraOM",
-  license= "MIT License",
+  license='GNU General Public License v3.0',
   install_requires=["requests>=2.23.0",
                     "pandas>=1.1.5",
                     "times"
@@ -17,5 +16,11 @@ setup(
               "Search_Region",
               "Variant_ID", 
               'Searches'],
-  packages =find_packages()
+    classifiers=[
+    'Development Status :: 3 - Alpha',      
+    'Intended Audience :: Developers',      
+    'Topic :: Software Development :: Build Tools',
+    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+    'Programming Language :: Python :: 3.8',
+  ],
 )
