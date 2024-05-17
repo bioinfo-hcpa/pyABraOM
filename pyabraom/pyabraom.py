@@ -79,7 +79,7 @@ def Process_data(df,CEGH_Filter,Variant_ID):
 
         frequency.append(df["data"][i]["Frequencies"])
 
-        if CEGH_Filter==True:
+        if CEGH_Filter:
            CEGH.append(df["data"][i]["CEGH_Filter"])
 
         if df["data"][i]["Chr"] in ['X','Y']:
@@ -100,12 +100,12 @@ def Process_data(df,CEGH_Filter,Variant_ID):
 
     data["Gene"]=gene_list
 
-    if Variant_ID==True:
+    if Variant_ID:
        data['rsID'] =  [i if i != 'NA' else '-' for i in Variant_ID_list]
 
     data["GATK Filter"]=Filter
 
-    if CEGH_Filter==True:
+    if CEGH_Filter:
        data["CEGH Filter"]=CEGH
 
     data["Number of Homozygotes"]= homozygous_alt_allele
@@ -153,7 +153,7 @@ def Search_gene(version:str,gene:str,CEGH_Filter= False,GATK_PASS= False,Variant
         gene= gene.upper()
         response = Request(version,gene,GATK_PASS)
         
-        if Process==True:
+        if Process:
             result = Process_data(response,CEGH_Filter,Variant_ID)
             data= Dataframe_adjust(result)
             data= data.loc[data['Gene'] == gene]
@@ -166,25 +166,20 @@ def Search_gene(version:str,gene:str,CEGH_Filter= False,GATK_PASS= False,Variant
 
 def Search_region(version:str,chromosome,start,end,CEGH_Filter= False,Variant_ID=False, Process= True):
 
-        if start > end:
-            raise Exception('End needs to be greater than start position.')
+      assert start < end, "End needs to be greater than start position."
+      if isinstance(chromosome, int):
+         region = "%d"":""%d""-""%d" %(chromosome, start, end)
+      else:
+         region = "%s"":""%d""-""%d" %(chromosome, start, end)
 
-        else:
-            try:
-              region = "%d"":""%d""-""%d" %(chromosome,start,end)
-            except:
-              region = "%s"":""%d""-""%d" %(chromosome,start,end)
+      response = Request(version,region)
+      if Process:
+         result = Process_data(response, CEGH_Filter, Variant_ID)
+         data = Dataframe_adjust(result)
+      else:
+         data = response
 
-            response = Request(version,region)
-
-            if Process==True:
-              result = Process_data(response,CEGH_Filter,Variant_ID)
-              data= Dataframe_adjust(result)
-
-            else:
-              data= response
-
-        return data
+      return data
 
 
 
@@ -192,7 +187,7 @@ def Variant_ID(version:str,variant:str,CEGH_Filter= False,GATK_PASS= False,Proce
 
     response = Request(version,variant,GATK_PASS)
     Variant_ID=False
-    if Process==True:
+    if Process:
        result = Process_data(response,CEGH_Filter,Variant_ID)
        data= Dataframe_adjust(result)
 
