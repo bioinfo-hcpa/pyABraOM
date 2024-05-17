@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name= "PyABraOM",
   packages = ['pyabraom'],
-  version = '0.1.6',
+  version = '0.2.0',
   description= "A Python API to communicate with ABraOM database",
   author ="Paola Carneiro and Felipe Colombelli",
   author_email= "bioinfo@hcpa.edu.br",
@@ -11,7 +11,8 @@ setup(
   include_package_data=True,
   install_requires=["requests>=2.23.0",
                     "pandas>=1.1.5",
-                    "times"
+                    "times",
+                    "tqdm"
                     ],
   py_modules=["Search_gene",
               "Search_Region",
