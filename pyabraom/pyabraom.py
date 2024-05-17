@@ -1,7 +1,10 @@
 import requests
 import pandas as pd
 import sys
-import pkg_resources
+import urllib3
+from tqdm import tqdm
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def Genome_version(version:str):
  
@@ -17,23 +20,21 @@ def Genome_version(version:str):
  
  
 def Request(version:str,query:str,GATK_PASS=False):
- 
    url ="https://abraom.ib.usp.br/script.php" 
 
    version = Genome_version(version)
-   certificate_path = pkg_resources.resource_filename('pyabraom', 
-                                                      'CertBundle.pem')
 
-   if GATK_PASS==False:
+   if not GATK_PASS:
       response= requests.post(url, data={"table": version, "str": query},
-                              verify=certificate_path, 
+                              verify=False,
                               timeout=None) 
 
    else:
       response= requests.post(url, data={"table": version, 
                                          "str": query,
                                          "gatk":'PASS'},
-                              verify=certificate_path, timeout=None) 
+                              verify=False,
+                              timeout=None) 
    return response.json()
  
 
@@ -134,14 +135,9 @@ def Dataframe_adjust(dataframe):
 
 def Searches(lista:list,verbose=True):
      appended_data = []
-     searches=len(lista)
-     count=1
-     for i in lista:
-         data = i
+     searches_data = tqdm(lista, desc="Batch searching") if verbose else lista
+     for data in searches_data:
          appended_data.append(data)
-         if verbose:
-            print("Batch searching... ",count, "/", searches)
-            count=count+1
 
      final_data = pd.concat(appended_data, ignore_index=True)
      if 'Number of Hemizygotes' in final_data.columns:
